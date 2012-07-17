@@ -1,0 +1,15 @@
+<h2>Metrics</h2>
+
+<%= render 'form' %>
+
+
+<table>
+  <% @out_metrics.each do |item| %>
+    <tr id="metric_<%= item.id%>">
+      <td> <%= item.name %> </td>
+      <td> <%= item.description %> </td>
+      <td> <%= link_to "Edit", edit_metric_path(item) %> </td>
+      <td> <%= link_to "Delete", item, :method => :delete  %> </td>
+  </tr>
+  <% end %>
+</ul>

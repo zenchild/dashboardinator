@@ -1,0 +1,15 @@
+<%= form_for @metric do |f|%>
+  <fieldset>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :snippet %>
+    <%= f.text_area :snippet %>
+  </fieldset>
+  <%= f.submit %>
+<% end %>
