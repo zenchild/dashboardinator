@@ -58,5 +58,68 @@ describe "Metrics" do
       page.should have_no_content "graphite"
     end
   end
+end
 
+describe "Portals" do
+  before do
+    @portal = Portal.create :name => "test portal", :description => "example portal"
+  end
+
+  describe "GET /portals" do
+    it "display some portals" do
+      visit portals_path
+      page.should have_content "test portal"
+      page.should have_content "Edit"
+      page.should have_content "Delete"
+    end
+
+    it "creates a new portal" do
+      visit portals_path
+      fill_in 'Name', :with => 'test2'
+      fill_in 'Description', :with => 'another test portal'
+      click_button "Create Portal"
+      current_path.should == portals_path
+      page.should have_content 'test2'
+    end
+  end
+
+  describe "PUT /portals" do
+    it "edits a portal metadata" do
+      visit portals_path
+      click_link "Edit"
+      current_path.should == edit_portal_path(@portal)
+      find_field("Name").value.should == 'test portal'
+      fill_in 'Name', :with => 'new test portal'
+      click_button "Update Portal"
+      current_path.should == portals_path
+      page.should have_content 'new test portal'
+    end
+
+    it "adds metrics to a portal" do
+      visit portals_path
+      find("#portal_#{@portal.id}").click_link "Edit"
+      page.should have_content @metric.name
+    end
+
+    it "validates the data" do
+      visit portals_path
+      click_link "Edit"
+      current_path.should == edit_portal_path(@portal)
+      find_field("Name").value.should == 'test portal'
+      fill_in 'Name', :with => ''
+      click_button "Update Portal"
+      current_path.should == edit_portal_path(@portal)
+      page.should have_content "Validation Error"
+    end
+  end
+
+  describe "DELETE /portals" do
+    it "deletes a portal" do
+      visit portals_path
+      find("#portal_#{@portal.id}").click_link "Delete"
+      current_path.should == portals_path
+      page.should have_content "Portal Deleted"
+      page.should have_no_content "test portal"
+    end
+  end
 end

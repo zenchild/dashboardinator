@@ -1,9 +1,12 @@
 Dashboard::Application.routes.draw do
+  get "portals/index"
+
   get "metrics/index"
 
   get "metrics_controller/index"
 
   resources :metrics
+  resources :portals
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
