@@ -6,7 +6,10 @@ Dashboard::Application.routes.draw do
   get "metrics_controller/index"
 
   resources :metrics
-  resources :portals
+  resources :portals do
+    resources :portlets
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

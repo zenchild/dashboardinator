@@ -11,6 +11,7 @@ class PortalsController < ApplicationController
 
   def edit
     @portal = Portal.find params[:id]
+    @portlets = @portal.metrics
   end
 
   def update
@@ -25,6 +26,11 @@ class PortalsController < ApplicationController
   def destroy
     Portal.destroy params[:id]
     redirect_to :back, :notice => "Portal Deleted"
+  end
+
+  def show
+    @portal = Portal.find params[:id]
+    @portlets = @portal.portlets
   end
 
 end

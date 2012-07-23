@@ -9,7 +9,8 @@
       <td> <%= link_to item.name, portal_path(item) %> </td>
       <td> <%= item.description %> </td>
       <td> <%= link_to "Edit", edit_portal_path(item) %> </td>
+      <td> <%= link_to "Add/Remove Metrics", portal_portlets_path(item) %> </td>
       <td> <%= link_to "Delete", item, :method => :delete  %> </td>
   </tr>
   <% end %>
-</ul>
+</table>

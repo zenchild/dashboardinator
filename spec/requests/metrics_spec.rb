@@ -62,7 +62,9 @@ end
 
 describe "Portals" do
   before do
+    @metric = Metric.create :name => "graphite", :description => "generic graphite graph example", :snippet => '<img src="http://dyn.com/wp-content/uploads/Graph.png"/>'
     @portal = Portal.create :name => "test portal", :description => "example portal"
+    @portlet = Portlet.create :metric_id => @metric.id, :portal_id => @portal.id
   end
 
   describe "GET /portals" do
@@ -70,6 +72,7 @@ describe "Portals" do
       visit portals_path
       page.should have_content "test portal"
       page.should have_content "Edit"
+      page.should have_content "Add/Remove Metrics"
       page.should have_content "Delete"
     end
 
@@ -95,12 +98,6 @@ describe "Portals" do
       page.should have_content 'new test portal'
     end
 
-    it "adds metrics to a portal" do
-      visit portals_path
-      find("#portal_#{@portal.id}").click_link "Edit"
-      page.should have_content @metric.name
-    end
-
     it "validates the data" do
       visit portals_path
       click_link "Edit"
@@ -122,4 +119,30 @@ describe "Portals" do
       page.should have_no_content "test portal"
     end
   end
+end
+
+describe "Portlets" do
+  before do
+    @metric = Metric.create :name => "graphite", :description => "generic graphite graph example", :snippet => '<img src="http://dyn.com/wp-content/uploads/Graph.png"/>'
+    @metric2 = Metric.create :name => "zenoss", :description => "generic graphite graph example", :snippet => '<img src="http://dyn.com/wp-content/uploads/Graph.png"/>'
+    @portal = Portal.create :name => "test portal", :description => "example portal"
+    @portlet = Portlet.create :metric_id => @metric.id, :portal_id => @portal.id
+  end
+
+  describe "GET /portal/:id/portlets" do
+    it "lists all portlets attached to a specific portal" do
+      visit portal_portlets_path(@portal)
+      find("metrics_have").should have_content "graphite"
+    end
+
+    it "lists the other metrics that are not included" do
+      visit portal_portlets_path(@portal)
+      page.should have_content "zenoss"
+    end
+
+    it "adds new metrics to a portal" do
+    end
+
+  end
+
 end

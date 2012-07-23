@@ -1,0 +1,27 @@
+<div id="metrics_have">
+  <h2> Metrics in this portal</h2>
+  <table>
+    <% @metrics.each do |item| %>
+      <tr id="metric_<%= item['id'] %>">
+        <td> <%= item['name'] %> </td>
+        <td> <%= item['description'] %> </td>
+        <td> <%= link_to "Remove from portal", portal_portlet_path(@this_portal, item['id']), :method => :delete  %> </td>
+    <% end %>
+  </table>
+</div>
+
+<div id="metrics_have_not">
+  <h2> Metrics you can add to this portal</h2>
+  <table>
+    <% @all_metrics.each do |item| %>
+      <tr id="portlet_<%= item['id'] %>">
+        <%= form_for @portlet, :url => portal_portlets_path(@this_portal)  do |f| %>
+          <%= f.hidden_field :metric_id, :value => item['id'] %>
+          <td> <%= item['name'] %> </td>
+          <td> <%= item['description'] %> </td>
+          <td> <%= f.submit "Add to Portal" %> </td>
+      <% end %> 
+      </tr> 
+    <% end %>
+  </table>
+</div>
