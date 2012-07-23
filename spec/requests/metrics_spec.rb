@@ -132,15 +132,24 @@ describe "Portlets" do
   describe "GET /portal/:id/portlets" do
     it "lists all portlets attached to a specific portal" do
       visit portal_portlets_path(@portal)
-      find("metrics_have").should have_content "graphite"
+      find("#metrics_have").should have_content "graphite"
     end
 
     it "lists the other metrics that are not included" do
       visit portal_portlets_path(@portal)
-      page.should have_content "zenoss"
+      find("#metrics_have_not").should have_content "zenoss"
     end
 
-    it "adds new metrics to a portal" do
+    it "adds/remove metrics to/from a portal" do
+      visit portal_portlets_path(@portal)
+      find("#portlet_#{@metric2.id}").click_button "Add to Portal"
+      current_path.should == portal_portlets_path(@portal)
+      find("#metrics_have").should have_content "zenoss"
+
+      visit portal_portlets_path(@portal)
+      find("#metric_#{@metric2.id}").click_link "Remove from portal"
+      current_path.should == portal_portlets_path(@portal)
+      find("#metrics_have_not").should have_content "zenoss"
     end
 
   end
