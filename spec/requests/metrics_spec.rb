@@ -152,6 +152,10 @@ describe "Portlets" do
       find("#metrics_have_not").should have_content "zenoss"
     end
 
+    it "renders a dashboard" do
+      visit portal_path(@portal)
+      page.should have_content @portal.name
+    end
   end
 
 end

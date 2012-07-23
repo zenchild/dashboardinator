@@ -1,0 +1,7 @@
+<h2> <%= @portal[:name] %> </h2>
+
+<% @metrics.each do |m| %>
+  <div id="metric_<%= m['id'] %>">
+    <%= raw m['snippet'] %>
+  </div>
+<% end %>

@@ -30,7 +30,7 @@ class PortalsController < ApplicationController
 
   def show
     @portal = Portal.find params[:id]
-    @portlets = @portal.portlets
+    @metrics = @portal.metrics
   end
 
 end
