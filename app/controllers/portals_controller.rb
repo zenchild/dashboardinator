@@ -1,10 +1,11 @@
 class PortalsController < ApplicationController
   def index
     @portal = Portal.new
-    @out_portals = Portal.all
+    @out_portals = current_user.portals.all
   end
 
   def create
+    #render :text => params.inspect
     Portal.create params[:portal]
     redirect_to :back
   end

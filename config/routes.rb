@@ -1,4 +1,8 @@
 Dashboard::Application.routes.draw do
+  get "users/create"
+
+  devise_for :users
+
   get "portals/index"
 
   get "metrics/index"
@@ -10,6 +14,8 @@ Dashboard::Application.routes.draw do
     resources :portlets
   end
   
+  root :to => 'portals#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
