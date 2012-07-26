@@ -9,9 +9,19 @@
 <body>
 
 <% flash.each do |name, message| %>
-  <%= content_tag :div, message, :id => "flash_#{name}" %>
+  <%= content_tag :div, message, :id => "flashbar" %>
 <% end %>
 
+<div id="banner">
+  <h1>Dashboard</h1>
+</div>
+
+<div class="navbar">
+  <ul class="navbar">
+    <li id="item"> <%= link_to "Portals", portals_path %> </li>
+    <li id="item"> <%= link_to "Metrics", metrics_path %> </li>
+  </ul>
+</div>
 
 <%= yield %>
 

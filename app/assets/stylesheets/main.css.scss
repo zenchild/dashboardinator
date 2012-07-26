@@ -1,0 +1,52 @@
+$page_background_color: #E6D3C7;
+$flashbar_color: #D3C7E6;
+$banner_background_color: #D3C7E6;
+$navbar_background_color: #D3C7E6;
+
+body {
+  background: $page_background_color;
+}
+
+#flashbar {
+  background: $flashbar_color;
+  padding: 0px
+}
+
+#banner {
+  background: $banner_background_color;
+  text-align: center;
+  margin: 0px
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+.navbar {
+  background: lighten($banner_background_color, 3%);
+  margin: 0px;
+}
+ul.navbar {
+    list-style-type:none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#item {
+  display: inline;
+  padding-right: 18px;
+  padding-left: 2px;
+  margin: 0px
+}
+
+fieldset.new_edit_form {
+  border: 1px dotted black;
+  width: 570px;
+}
+legend.new_edit_form {
+    padding: 0.2em 0.5em;
+    font-size:90%;
+    text-align:left
+}
+#snippet {
+}

@@ -3,7 +3,7 @@
 <%= render 'form' %>
 
 
-<table>
+<table class="data_out">
   <% @out_portals.each do |item| %>
     <tr id="portal_<%= item.id%>">
       <td> <%= link_to item.name, portal_path(item) %> </td>

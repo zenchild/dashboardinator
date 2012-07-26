@@ -1,5 +1,6 @@
 class MetricsController < ApplicationController
   def index
+    @purpose = "Create"
     @metric = Metric.new
     @out_metrics = Metric.all
   end
@@ -10,6 +11,7 @@ class MetricsController < ApplicationController
   end
 
   def edit
+    @purpose = "Edit"
     @metric = Metric.find params[:id]
   end
 

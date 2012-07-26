@@ -2,6 +2,7 @@ class PortalsController < ApplicationController
   def index
     @portal = Portal.new
     @out_portals = current_user.portals.all
+    @purpose = "Create"
   end
 
   def create
@@ -11,6 +12,7 @@ class PortalsController < ApplicationController
   end
 
   def edit
+    @purpose = "Edit"
     @portal = Portal.find params[:id]
     @portlets = @portal.metrics
   end
