@@ -1,21 +1,24 @@
-<h2>Metrics</h2>
+<div id="content">
+  <h1 class="page-title">Metrics</h1>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
 
-<div class="listing">
-  <% @out_metrics.each do |item| %>
-    <p class="heading" id="metric_<%= item.id%>">
-      <img src="http://www.psc.nd.gov/images/more-info.png">
-      <b><%= item.name %></b>
-      <%= link_to "Edit", edit_metric_path(item), :id => "edit" %> 
-      <%= link_to "Delete", item, :method => :delete, :id => "edit" %> 
-    </p>
-    <div class="content"> 
-      <p>
-        <%= item.description %>
-      </p>
-      <%= raw item['snippet'] %>
-    </div>
-  <% end %>
-</div>
+  <div id="listing">
+    <% @out_metrics.each do |item| %>
+      <div class="heading hidden" id="metric_<%= item.id%>">
+        <ul class="inline">
+          <li> <%= link_to "Edit", edit_metric_path(item), :class => "edit" %> </li>
+          <li> <%= link_to "Delete", item, :method => :delete, :class => "edit" %> </li>
+        </ul>
+        <p><%= item.name %></p>
+      </div>
+      <div class="content"> 
+        <p>
+          <%= item.description %>
+        </p>
+        <%= raw item['snippet'] %>
+      </div>
+    <% end %>
+  </div>
+</div

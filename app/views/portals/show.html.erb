@@ -1,18 +1,26 @@
-<h2> <%= @portal[:name] %> </h2>
+<div id="content">
+  <h1 class="page-title"> <%= @portal[:name] %> </h1>
 
-<% @metrics.each do |m| %>
-  <div class="portlet">
-    <div class="title">
-      <h3 class="bar"> <%= m['name'] %> </h3>
-      <%= form_for m, :url => portal_portlet_up_path(@portal.id, m['id']), :action => "post" do |f| %>
-        <%= f.submit "Up", :class => "text-button" %>
-      <% end %>
-      <%= form_for m, :url => portal_portlet_down_path(@portal.id, m['id']), :action => "post" do |f| %>
-        <%= f.submit "Down", :class => "text-button" %>
-      <% end %>
+  <% @metrics.each do |m| %>
+  <div id="listing">
+      <div class="portlet hidden">
+        <ul class="inline">
+          <li> 
+            <%= form_for m, :url => portal_portlet_up_path(@portal.id, m['id']), :action => "post" do |f| %>
+              <%= f.submit "Up", :id => "text-button" %>
+            <% end %>
+          </li>
+          <li>
+            <%= form_for m, :url => portal_portlet_down_path(@portal.id, m['id']), :action => "post" do |f| %>
+              <%= f.submit "Down", :id => "text-button" %>
+            <% end %>
+          </li>
+        </ul>
+        <p> <%= m['name'] %> </p>  
+      </div>
+      <div class="metric">
+        <%= raw m['snippet'] %>
+      </div>
     </div>
-    <div class="metric">
-      <%= raw m['snippet'] %>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

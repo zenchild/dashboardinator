@@ -17,7 +17,7 @@ jQuery(document).ready(function() {
 </script>
 </head>
 <body>
-<div align="center">
+<div  id="page-wrap">
   <% flash.each do |name, message| %>
     <%= content_tag :div, message, :id => "flashbar" %>
   <% end %>
@@ -26,8 +26,8 @@ jQuery(document).ready(function() {
     <h1>Dashboard</h1>
   </div>
 
-  <div class="navbar">
-    <ul class="navbar">
+  <div  id="navbar">
+    <ul>
       <li class="navbar"> <%= link_to "Portals", portals_path %> </li>
       <li class="navbar"> <%= link_to "Metrics", metrics_path %> </li>
     </ul>

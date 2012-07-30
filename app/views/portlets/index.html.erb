@@ -1,41 +1,45 @@
-<div id="metrics_have">
-  <h2> Metrics in this portal</h2>
-  <div class="listing">
-    <% @metrics.each do |item| %>
-      <p class="heading" id="metric_<%= item['id'] %>">
-        <img src="http://www.psc.nd.gov/images/more-info.png">
-        <b> <%= item['name'] %> </b>
-        <%= link_to "Remove from portal", portal_portlet_path(@this_portal, item['id']), :method => :delete, :id => "edit" %>
-      </p>
-      <div class="content"> 
-        <p>
-          <%= item.description %> 
-        </p>
-        <%= raw item['snippet'] %>
+<div id="content">
+  <h1 class="page-title">Portlets</h1>
 
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<div id="metrics_have_not">
-  <h2> Metrics you can add to this portal</h2>
-  <div class="listing">
-    <% @all_metrics.each do |item| %>
-      <%= form_for @portlet, :url => portal_portlets_path(@this_portal), :class => "heading"  do |f| %>
-        <%= f.hidden_field :metric_id, :value => item['id'] %>
-        <p class="heading" id="portlet_<%= item['id'] %>">
-          <img src="http://www.psc.nd.gov/images/more-info.png">
-          <b> <%= item['name'] %> </b>
-          <%= f.submit "Add to Portal", :class => "text-button" %>
-        </p>
+  <div id="metrics_have">
+    <h2> Metrics in this portal</h2>
+    <div id="listing">
+      <% @metrics.each do |item| %>
+        <div class="heading hidden" id="metric_<%= item['id'] %>">
+          <ul class="inline">
+            <li> <%= link_to "Remove from portal", portal_portlet_path(@this_portal, item['id']), :method => :delete, :id => "edit" %> </li>
+          </ul>
+          <p> <%= item['name'] %> </p>
+        </div>
         <div class="content"> 
           <p>
-            <%= item.description %>
+            <%= item.description %> 
           </p>
           <%= raw item['snippet'] %>
-        </div> 
+        </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
+
+  <div id="metrics_have_not">
+    <h2> Metrics you can add to this portal</h2>
+    <div id="listing">
+      <% @all_metrics.each do |item| %>
+        <%= form_for @portlet, :url => portal_portlets_path(@this_portal), :class => "heading"  do |f| %>
+          <%= f.hidden_field :metric_id, :value => item['id'] %>
+          <div class="heading hidden" id="portlet_<%= item['id'] %>">
+            <ul class="inline">
+              <li> <%= f.submit "Add to Portal", :class => "edit", :id => "text-button" %> </li>
+            </ul>
+            <p> <%= item['name'] %> </p>
+          </div>
+          <div class="content"> 
+            <p>
+              <%= item.description %>
+            </p>
+            <%= raw item['snippet'] %>
+          </div> 
+        <% end %>
+      <% end %>
+    </div>
+  </div>

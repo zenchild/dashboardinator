@@ -1,18 +1,23 @@
-<h2>Portals</h2>
+<div id="content">
+  <h1 class="page-title">Portals</h1>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
 
-<div class="listing">
-  <% @out_portals.each do |item| %>
-    <p class="heading" id="portal_<%= item.id%>">
-      <img src="http://www.psc.nd.gov/images/more-info.png">
-      <b> <%= item.name %> </b>
-      <%= link_to "View", portal_path(item), :id => "edit" %>
-      <%= link_to "Edit", edit_portal_path(item), :id => "edit" %> 
-      <%= link_to "Add/Remove Metrics", portal_portlets_path(item), :id => "edit" %>
-      <%= link_to "Delete", item, :method => :delete, :id => "edit"  %>
-    </p>
-    <div class="content"> <%= item.description %> </div> 
-  <% end %>
+  <div id="listing">
+    <% @out_portals.each do |item| %>
+      <div class="heading hidden" id="portal_<%= item.id%>">
+        <ul class="inline">
+          <li> <%= link_to "View", portal_path(item), :class => "edit" %> </li>
+          <li> <%= link_to "Edit", edit_portal_path(item), :class => "edit" %> </li>
+          <li> <%= link_to "Add/Remove Metrics", portal_portlets_path(item), :id => "edit" %> </li>
+          <li> <%= link_to "Delete", item, :method => :delete, :id => "edit"  %> </li>
+        </ul>
+        <p> <%= item.name %> </p>
+      </div>
+      <div class="content"> 
+        <%= item.description %> 
+      </div> 
+    <% end %>
+  </div>
 </div>

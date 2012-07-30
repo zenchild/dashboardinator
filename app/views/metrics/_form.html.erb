@@ -1,16 +1,22 @@
 <div class="new_edit_form">
   <%= form_for @metric do |f|%>
-    <fieldset class="new_edit_form">
+    <fieldset>
       <legend class="new_edit_form"><%= @purpose %> a Metric</legend>
-      <div>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-        <%= f.label :description %>
-        <%= f.text_field :description %>
+      <div class="form-row">
+        <div class="input-item">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+        <div class="input-item">
+          <%= f.label :description %>
+          <%= f.text_field :description %>
+        </div>
       </div>
-      <div id="snippet">
+      <div class="form-row">
         <%= f.label :snippet %>
         <%= f.text_area :snippet %>
+      </div>
+      <div class="form-row">
         <%= f.submit %>
       </div>
     </fieldset>
