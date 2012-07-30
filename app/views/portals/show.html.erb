@@ -1,7 +1,18 @@
 <h2> <%= @portal[:name] %> </h2>
 
 <% @metrics.each do |m| %>
-  <div id="metric_<%= m['id'] %>">
-    <%= raw m['snippet'] %>
+  <div class="portlet">
+    <div class="title">
+      <h3 class="bar"> <%= m['name'] %> </h3>
+      <%= form_for m, :url => portal_portlet_up_path(@portal.id, m['id']), :action => "post" do |f| %>
+        <%= f.submit "Up", :class => "text-button" %>
+      <% end %>
+      <%= form_for m, :url => portal_portlet_down_path(@portal.id, m['id']), :action => "post" do |f| %>
+        <%= f.submit "Down", :class => "text-button" %>
+      <% end %>
+    </div>
+    <div class="metric">
+      <%= raw m['snippet'] %>
+    </div>
   </div>
 <% end %>

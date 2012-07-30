@@ -1,27 +1,41 @@
 <div id="metrics_have">
   <h2> Metrics in this portal</h2>
-  <table>
+  <div class="listing">
     <% @metrics.each do |item| %>
-      <tr id="metric_<%= item['id'] %>">
-        <td> <%= item['name'] %> </td>
-        <td> <%= item['description'] %> </td>
-        <td> <%= link_to "Remove from portal", portal_portlet_path(@this_portal, item['id']), :method => :delete  %> </td>
+      <p class="heading" id="metric_<%= item['id'] %>">
+        <img src="http://www.psc.nd.gov/images/more-info.png">
+        <b> <%= item['name'] %> </b>
+        <%= link_to "Remove from portal", portal_portlet_path(@this_portal, item['id']), :method => :delete, :id => "edit" %>
+      </p>
+      <div class="content"> 
+        <p>
+          <%= item.description %> 
+        </p>
+        <%= raw item['snippet'] %>
+
+      </div>
     <% end %>
-  </table>
+  </div>
 </div>
 
 <div id="metrics_have_not">
   <h2> Metrics you can add to this portal</h2>
-  <table>
+  <div class="listing">
     <% @all_metrics.each do |item| %>
-      <tr id="portlet_<%= item['id'] %>">
-        <%= form_for @portlet, :url => portal_portlets_path(@this_portal)  do |f| %>
-          <%= f.hidden_field :metric_id, :value => item['id'] %>
-          <td> <%= item['name'] %> </td>
-          <td> <%= item['description'] %> </td>
-          <td> <%= f.submit "Add to Portal" %> </td>
-      <% end %> 
-      </tr> 
+      <%= form_for @portlet, :url => portal_portlets_path(@this_portal), :class => "heading"  do |f| %>
+        <%= f.hidden_field :metric_id, :value => item['id'] %>
+        <p class="heading" id="portlet_<%= item['id'] %>">
+          <img src="http://www.psc.nd.gov/images/more-info.png">
+          <b> <%= item['name'] %> </b>
+          <%= f.submit "Add to Portal", :class => "text-button" %>
+        </p>
+        <div class="content"> 
+          <p>
+            <%= item.description %>
+          </p>
+          <%= raw item['snippet'] %>
+        </div> 
+      <% end %>
     <% end %>
-  </table>
+  </div>
 </div>

@@ -3,14 +3,16 @@
 <%= render 'form' %>
 
 
-<table class="data_out">
+<div class="listing">
   <% @out_portals.each do |item| %>
-    <tr id="portal_<%= item.id%>">
-      <td> <%= link_to item.name, portal_path(item) %> </td>
-      <td> <%= item.description %> </td>
-      <td> <%= link_to "Edit", edit_portal_path(item) %> </td>
-      <td> <%= link_to "Add/Remove Metrics", portal_portlets_path(item) %> </td>
-      <td> <%= link_to "Delete", item, :method => :delete  %> </td>
-  </tr>
+    <p class="heading" id="portal_<%= item.id%>">
+      <img src="http://www.psc.nd.gov/images/more-info.png">
+      <b> <%= item.name %> </b>
+      <%= link_to "View", portal_path(item), :id => "edit" %>
+      <%= link_to "Edit", edit_portal_path(item), :id => "edit" %> 
+      <%= link_to "Add/Remove Metrics", portal_portlets_path(item), :id => "edit" %>
+      <%= link_to "Delete", item, :method => :delete, :id => "edit"  %>
+    </p>
+    <div class="content"> <%= item.description %> </div> 
   <% end %>
-</table>
+</div>

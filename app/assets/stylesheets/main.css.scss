@@ -1,52 +1,104 @@
-$page_background_color: #E6D3C7;
-$flashbar_color: #D3C7E6;
-$banner_background_color: #D3C7E6;
-$navbar_background_color: #D3C7E6;
+$page_background_color: #D0EDDE;
+$flashbar_color: #B3B597;
+$banner_color: #678C8B;
+$text_color: #262B30;
+$width: 800px;
+
 
 body {
-  background: $page_background_color;
+  /*background: $page_background_color;*/
 }
 
 #flashbar {
-  background: $flashbar_color;
-  padding: 0px
+  /*background: $flashbar_color;*/
+  padding: 0px;
+  width: $width;
 }
 
 #banner {
-  background: $banner_background_color;
+  /*background: $banner_color;*/
   text-align: center;
-  margin: 0px
+  margin: 0px;
+  width: $width;
 }
 
 h1 {
   margin-bottom: 0;
+  /*color: $text_color;*/
+  text-align: left;
 }
+
 
 .navbar {
-  background: lighten($banner_background_color, 3%);
+  /*background: lighten($banner_color, 3%);*/
   margin: 0px;
+  width: $width;
 }
 ul.navbar {
-    list-style-type:none;
-    margin: 0px;
-    padding: 0px;
+  list-style-type:none;
+  margin: 0px;
+  padding: 0px;
+  /*color: $text_color;*/
+  text-align: left;
 }
 
-#item {
+li.navbar {
   display: inline;
   padding-right: 18px;
   padding-left: 2px;
-  margin: 0px
+  margin: 0px;
+  text-align: left;
 }
 
 fieldset.new_edit_form {
   border: 1px dotted black;
-  width: 570px;
+  width: $width;
+  margin-bottom: 30px;
 }
 legend.new_edit_form {
     padding: 0.2em 0.5em;
     font-size:90%;
-    text-align:left
+    text-align:left;
+    /*color: $text_color;*/
 }
-#snippet {
+
+.listing {
+  margin: 0;
+  padding: 0;
+  width: $width;
+  text-align: left;
 }
+ 
+.heading {
+  width: $width;
+  margin: 1px;
+  padding: 3px 10px;
+  cursor: pointer;
+  position: relative;
+  border-top: 1px dotted black;
+}
+#edit{
+  padding: 10px;
+}
+.content {
+  padding: 5px 10px;
+  /*background-color: lighten($page_background_color, 10%);*/
+  text-align: left;
+}
+img {
+  align: left;
+}
+p { 
+  padding: 5px 0; 
+  /*color: $text_color;*/
+  text-align: left;
+}
+
+.text-button 
+  { 
+    background-color: Transparent;                 
+    text-decoration: underline;               
+    color: blue;
+    cursor: pointer; 
+    border:0
+  } 

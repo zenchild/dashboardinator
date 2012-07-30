@@ -7,11 +7,12 @@ Dashboard::Application.routes.draw do
 
   get "metrics/index"
 
-  get "metrics_controller/index"
-
   resources :metrics
   resources :portals do
-    resources :portlets
+    resources :portlets do
+      put 'up'
+      put 'down'
+    end
   end
   
   root :to => 'portals#index'

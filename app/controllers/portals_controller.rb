@@ -33,7 +33,7 @@ class PortalsController < ApplicationController
 
   def show
     @portal = Portal.find params[:id]
-    @metrics = @portal.metrics
+    @metrics = Metric.find_by_sql("select a.id, display_order, metric_id, name, snippet from portlets a, metrics b where a.metric_id = b.id and a.portal_id = #{params[:id]} order by display_order")
   end
 
 end

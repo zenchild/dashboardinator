@@ -13,6 +13,7 @@ group :test, :development do
   gem 'capybara'
   gem 'guard-rspec'
   gem 'launchy'
+  gem 'warden'
 end
 
 # Gems used only for assets and not required

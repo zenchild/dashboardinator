@@ -46,7 +46,7 @@ describe "Metrics" do
       click_button "Update Metric"
       current_path.should == edit_metric_path(@metric)
       page.should have_content "Validation Error"
-    end
+    end 
   end
 
   describe "DELETE /metrics" do
@@ -56,7 +56,7 @@ describe "Metrics" do
       current_path.should == metrics_path
       page.should have_content "Metric Deleted"
       page.should have_no_content "graphite"
-    end
+    end 
   end
 end
 

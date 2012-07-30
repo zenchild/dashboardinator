@@ -11,7 +11,7 @@ class PortletsController < ApplicationController
   end
 
   def create
-    Portlet.create(:metric_id => params[:portlet][:metric_id], :portal_id => params[:portal_id], :order => 0)
+    Portlet.create(:metric_id => params[:portlet][:metric_id], :portal_id => params[:portal_id], :display_order => 0)
     redirect_to :back
     #render :text => params.inspect
   end
@@ -21,5 +21,21 @@ class PortletsController < ApplicationController
     Portlet.destroy @p
     redirect_to :back
     #render :text => params.inspect
+  end
+
+  def up
+    @portlet = Portlet.find(params[:portlet_id])
+    @up = @portlet.display_order - 1
+    @portlet.display_order = @up
+    @portlet.save
+    redirect_to :back
+  end
+
+  def down
+    @portlet = Portlet.find(params[:portlet_id])
+    @up = @portlet.display_order + 1
+    @portlet.display_order = @up
+    @portlet.save
+    redirect_to :back
   end
 end

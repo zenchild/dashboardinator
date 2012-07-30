@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(:version => 20120724155237) do
   create_table "portlets", :force => true do |t|
     t.integer  "metric_id"
     t.integer  "portal_id"
-    t.integer  "order"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "display_order"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "users", :force => true do |t|

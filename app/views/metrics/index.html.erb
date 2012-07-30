@@ -3,13 +3,19 @@
 <%= render 'form' %>
 
 
-<table>
+<div class="listing">
   <% @out_metrics.each do |item| %>
-    <tr id="metric_<%= item.id%>">
-      <td> <%= item.name %> </td>
-      <td> <%= item.description %> </td>
-      <td> <%= link_to "Edit", edit_metric_path(item) %> </td>
-      <td> <%= link_to "Delete", item, :method => :delete  %> </td>
-  </tr>
+    <p class="heading" id="metric_<%= item.id%>">
+      <img src="http://www.psc.nd.gov/images/more-info.png">
+      <b><%= item.name %></b>
+      <%= link_to "Edit", edit_metric_path(item), :id => "edit" %> 
+      <%= link_to "Delete", item, :method => :delete, :id => "edit" %> 
+    </p>
+    <div class="content"> 
+      <p>
+        <%= item.description %>
+      </p>
+      <%= raw item['snippet'] %>
+    </div>
   <% end %>
-</ul>
+</div>
