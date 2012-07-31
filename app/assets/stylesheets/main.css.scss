@@ -5,45 +5,46 @@ $highlight_contrast: #FFFFFF;
  weight: bold;
 }
 }
-@mixin link {  color: $highlight_color;
+@mixin link { color: $highlight_color;
  background-color:$highlight_contrast;
 }
-@mixin inline-list {
-  ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-
-li {
-  display: inline;
-  padding: 0 10px 0 0;
-  margin: 0;
-  }
-li + li { padding-left:10px; border-left:1px solid #000;}
-  }
+@mixin inline-list {  ul {
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+ li {
+ display: inline;
+ padding: 0 10px 0 0;
+ margin: 0;
+}
+li + li {
+padding-left:10px;
+border-left:1px solid #000;
+}
+}
 }
 @mixin radius {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
-  border-radius: 15px;}
+  border-radius: 15px;
+}
 @mixin shadow {
-  -moz-box-shadow:    5px 5px 5px 3px #CCC;
+  -moz-box-shadow: 5px 5px 5px 3px #CCC;
   -webkit-box-shadow: 5px 5px 5px 3px #CCC;
-  box-shadow:         5px 5px 5px 3px #CCC;
+  box-shadow: 5px 5px 5px 3px #CCC;
 }
 @mixin imgstyle {
-  @include shadow;
-  border:1px solid #000;
-  padding:0;
-  margin:10px;
-  }
+ @include shadow;
+  border: 1px solid #000;
+  padding: 0;
+  margin: 10px;
+}
 body {
   text-align: left;
   color: #000;
   background-color: #FFFFFF;
   font-size: 1em;
   font-family: Arial, Helvetica, sans-serif;
-
 }
 a { }
 a:link {
@@ -63,102 +64,107 @@ h1 {
   font-size: 3em;
  @include large-text;
 }
-h1.page-title { 
-  color:#000; 
-  background-color:#FFF; 
-  font-style:italic;
+h1.page-title {
+  color: #000;
+  background-color: #FFF;
+  font-style: italic;
   text-shadow: 3px 3px 3px #CCC;
-  filter: dropshadow(color=#CCC, offx=3, offy=3);}
+  filter: dropshadow(color=#CCC, offx=3, offy=3);
+}
 h2 {
   font-size: 2em;
-  margin:0;
-  padding:15px 0 5px;
-  background-color: $highlight_contrast;
-  color: $highlight_color; 
-  @include large-text;
+  margin: 0;
+  padding: 15px 0 5px;
+ background-color: $highlight_contrast;
+ color: $highlight_color;
+ @include large-text;
 }
 h3 {
   font-size: 1.5em;
   font-style: italic;
-  margin:0;
-  padding:10px 0 0;
+  margin: 0;
+  padding: 10px 0 0;
  @include large-text;
 }
-h4 { font-size: 1.3em; 
-  margin:0;
-  padding:5px 0 0; 
-  @include large-text;
+h4 {
+  font-size: 1.3em;
+  margin: 0;
+  padding: 5px 0 0;
+ @include large-text;
 }
 h5 {
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
   font-size: 1.2em;
   font-style: italic;
-  @include large-text;
+ @include large-text;
 }
 h6 {
   margin: 0;
-  padding:0;
+  padding: 0;
   font-size: 1.15em;
  @include large-text;
-  font-weight:normal;}
-p { padding:0 0 7px 0; margin:0;}
-ul, ol {}
-li {}
-dl {}
-dt { font-weight:bold;}
-dd {} 
-img {}
+  font-weight: normal;
+}
+p {
+  padding: 0 0 7px 0;
+  margin: 0;
+}
+ul, ol { }
+li { }
+dl { }
+dt { font-weight: bold; }
+dd { }
+img { }
 img.img-left {
-  @include imgstyle;
-  float:left;
-  margin-left:0;}
+ @include imgstyle;
+  float: left;
+  margin-left: 0;
+}
 img.img-right {
-  @include imgstyle;
-  float:right;
-  margin-right:0;}
-table { 
-  border-top:1px solid #000;
-  border-right:1px solid #000;
-  text-align:left;
-  border-collapse:collapse;}
-tr {}
+ @include imgstyle;
+  float: right;
+  margin-right: 0;
+}
+table {
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  text-align: left;
+  border-collapse: collapse;
+}
+tr { }
 td, th {
-  border-bottom:1px solid #000;
-  border-left:1px solid #000;
-  padding:7px;
-  margin:0;
-  vertical-align:top;}
-td {}
-th { 
-  text-align:center;
-  background-color: $highlight_color;
-  color: $highlight_contrast;}
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #000;
+  padding: 7px;
+  margin: 0;
+  vertical-align: top;
+}
+td { }
+th { text-align: center;  background-color: $highlight_color;
+ color: $highlight_contrast;
+}
 #page-wrap {
   width: 975px;
   margin: 0 auto;
 }
 #banner {
   margin: 0;
-  padding:10px;
+  padding: 10px;
 }
-
 #navbar {
   margin: 0 0 15px;
-  padding:7px 15px;
-  
-  background-color: $highlight_color;
-  color: $highlight_contrast;
-  @include radius;
-  @include shadow;
-  a {
-  background-color: $highlight_color;
-  color:$highlight_contrast;
-  }
-  @include inline-list;
-  ul li + li {
-    border-left-color: #FFF;
+  padding: 7px 15px;
+ background-color: $highlight_color;
+ color: $highlight_contrast;
+ @include radius;
+ @include shadow;
+ a {
+ background-color: $highlight_color;
+ color:$highlight_contrast;
 }
+ @include inline-list;
+ul li + li { border-left-color: #FFF; }
 }
 fieldset {
   border: 1px solid #000;
@@ -170,47 +176,59 @@ legend {
   font-weight: bold;
   font-style: italic;
 }
-.form-row { 
+.form-row {
   margin: 10px;
-  overflow: hidden; }
-input { font-size:1em;}
-input[type="submit"], input[type="reset"] { margin-left:100px;}
-input[type="submit"] + input, input[type="reset"] +input { margin-left:0;}
+  overflow: hidden;
+}
+input { font-size: 1em; }
+input[type="submit"], input[type="reset"] { margin-left: 100px; }
+input[type="submit"] + input, input[type="reset"] +input { margin-left: 0; }
 .input-item {
   display: inline-block;
-  margin-right: 25px; 
+  margin-right: 25px;
 }
 label {
   float: left;
   font-weight: bold;
   width: 100px;
 }
-#listing {
+.listing {
   margin: 0;
   padding: 0;
 }
 .heading {
   margin: 0;
   padding: 3px 10px 3px 20px;
-  background-image:url(/assets/more-info.png);
-  background-position:left 5px;
-  background-repeat:no-repeat;
+  background-image: url(/assets/more-info.png);
+  background-position: left 5px;
+  background-repeat: no-repeat;
   cursor: pointer;
   border-top: 1px solid #000;
-  @include inline-list;
-  ul.inline { float:right;}
+  border-bottom: 1px solid #000;
+ @include inline-list;
+ ul.inline {
+float:right;
+text-align:right;
 }
-.hidden {
-  .content {
-    position:absolute; left:-1000px;
-    }}
-.highlight { color:#0F0;}
+form {display:inline-block;}
+form, input {
+  margin:0;
+  padding:0;
+}
+input[type="submit"]{
+  cursor: pointer;
+  border: 0;
+  @include link; text-decoration: underline; }
+input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:focus {
+ @include link; text-decoration: none; }
 
-#text-button 
-  { 
-    background-color: Transparent;                 
-    text-decoration: underline;               
-    color: blue;
-    cursor: pointer; 
-    border:0
-  } 
+}
+.heading + .heading { border-top: none;}
+
+.hidden {  .content {
+ position:absolute;
+left:-1000px;
+}
+}
+.highlight { color: #0F0; }
+

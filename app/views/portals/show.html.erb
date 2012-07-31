@@ -2,8 +2,8 @@
   <h1 class="page-title"> <%= @portal[:name] %> </h1>
 
   <% @metrics.each do |m| %>
-  <div id="listing">
-      <div class="portlet hidden">
+  <div class="listing">
+      <div class="heading" id="portlet">
         <ul class="inline">
           <li> 
             <%= form_for m, :url => portal_portlet_up_path(@portal.id, m['id']), :action => "post" do |f| %>

@@ -3,7 +3,7 @@
 
   <div id="metrics_have">
     <h2> Metrics in this portal</h2>
-    <div id="listing">
+    <div class="listing">
       <% @metrics.each do |item| %>
         <div class="heading hidden" id="metric_<%= item['id'] %>">
           <ul class="inline">
@@ -23,7 +23,7 @@
 
   <div id="metrics_have_not">
     <h2> Metrics you can add to this portal</h2>
-    <div id="listing">
+    <div class="listing">
       <% @all_metrics.each do |item| %>
         <%= form_for @portlet, :url => portal_portlets_path(@this_portal), :class => "heading"  do |f| %>
           <%= f.hidden_field :metric_id, :value => item['id'] %>

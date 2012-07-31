@@ -18,12 +18,13 @@ li + li { padding-left:10px; border-left:1px solid #000;}
   }
 }
 
-.portlet {
+#portlet {
   margin: 0;
   padding: 3px 10px 3px 20px;
   background-position:left 5px;
+  background-image: none;
   background-repeat:no-repeat;
-  cursor: pointer;
+  cursor: auto;
   background-color: lighten($highlight_color, 75%);
   /*border-top: 1px solid #000;*/
   @include inline-list;
