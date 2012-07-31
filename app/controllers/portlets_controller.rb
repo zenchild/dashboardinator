@@ -11,7 +11,15 @@ class PortletsController < ApplicationController
   end
 
   def create
-    Portlet.create(:metric_id => params[:portlet][:metric_id], :portal_id => params[:portal_id], :display_order => 0)
+    @orders = Portlet.select(:display_order).where(:portal_id => params[:portal_id])
+    if @orders == []
+      @fake = Hash.new
+      @fake[:display_order] = 0
+      @orders << @fake
+    end
+    @max_order = @orders.max[:display_order]
+    @new_order = @max_order + 1
+    Portlet.create(:metric_id => params[:portlet][:metric_id], :portal_id => params[:portal_id], :display_order => @new_order)
     redirect_to :back
     #render :text => params.inspect
   end

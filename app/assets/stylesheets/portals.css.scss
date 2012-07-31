@@ -26,7 +26,7 @@ li + li { padding-left:10px; border-left:1px solid #000;}
   background-repeat:no-repeat;
   cursor: auto;
   background-color: lighten($highlight_color, 75%);
-  /*border-top: 1px solid #000;*/
+  border-top: 0px solid #000;
   @include inline-list;
   ul.inline { float:right;}
 }
