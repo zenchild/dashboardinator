@@ -14,7 +14,9 @@ A metric is a single graph, say, or whatever you wish. When you create a metric,
 
 The snippet could be something like:
 
-  <img src="<url of your graph image here>" >
+```html
+    <img src="<url of your graph image here>" >
+```
 
 If it can be rendered as an HTML snippet, it can be a metric.
 
