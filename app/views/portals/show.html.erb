@@ -1,25 +1,25 @@
 <div id="content">
-  <h1 class="page-title"> <%= @portal[:name] %> </h1>
+  <h1 class="page-title"> <%= @portal.name %> </h1>
 
-  <% @metrics.each do |m| %>
+  <% @portal.ordered_metrics.each do |m| %>
   <div class="listing">
       <div class="heading" id="portlet">
         <ul class="inline">
-          <li> 
-            <%= form_for m, :url => portal_portlet_up_path(@portal.id, m['id']), :action => "post" do |f| %>
+          <li>
+            <%= form_for m, :url => portal_portlet_up_path(@portal.id, m.id), :action => "post" do |f| %>
               <%= f.submit "Up", :id => "text-button" %>
             <% end %>
           </li>
           <li>
-            <%= form_for m, :url => portal_portlet_down_path(@portal.id, m['id']), :action => "post" do |f| %>
+            <%= form_for m, :url => portal_portlet_down_path(@portal.id, m.id), :action => "post" do |f| %>
               <%= f.submit "Down", :id => "text-button" %>
             <% end %>
           </li>
         </ul>
-        <p> <%= m['name'] %> </p>  
+        <p> <%= m.name %> </p>
       </div>
       <div class="metric">
-        <%= raw m['snippet'] %>
+        <%= raw m.snippet %>
       </div>
     </div>
   <% end %>

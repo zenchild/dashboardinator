@@ -24,4 +24,9 @@ class Portal < ActiveRecord::Base
   has_many :metrics, :through => :portlets
 
   belongs_to :user
+
+  def ordered_metrics
+    @ordered_metrics ||= metrics.joins(:portlets).order('portlets.display_order')
+  end
+
 end
